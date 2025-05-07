@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>鎖手機龍 - 專注計時器</title>
+  <meta charset="utf-8" />
+</head>
+<body>
+  <h1>設定你的專注時間</h1>
+  <label for="minutes">分鐘：</label>
+  <input type="number" id="minutes" min="1" max="180" />
+  <button onclick="startFocus()">開始鎖定</button>
+
+  <script>
+    function startFocus() {
+      const minutes = document.getElementById("minutes").value;
+      fetch(`http://dragon.local/start?time=${minutes}`)
+        .then(() => alert("龍已啟動！"))
+        .catch(() => alert("連線失敗，請確認龍有連上 WiFi"));
+    }
+  </script>
+</body>
+</html>
